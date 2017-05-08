@@ -1,2 +1,5 @@
 env
+npm-debug.log
 __pycache__
+node_modules
+static/dist/bundle.js

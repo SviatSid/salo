@@ -5,4 +5,4 @@ from tram_api.resources import BaseResource
 class UIResource(BaseResource):
 
     def get(self):
-        return send_from_directory('../static', 'index.html')
+        return send_from_directory('../static/app/', 'index.html')
