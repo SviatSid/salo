@@ -2,3 +2,4 @@ Flask
 Flask-Script
 flask-restful
 flask_restful_swagger
+vk
