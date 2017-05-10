@@ -2,10 +2,13 @@ var path = require('path');
 
 
 var config = {
-  entry: "./app/index.jsx",
+  entry: {
+    "log_in": "./app/log_in.jsx",
+    "index": "./app/index.jsx"
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [

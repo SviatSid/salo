@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Test from './js/test.jsx';
 
-class HelloWorld extends React.Component {
+class VKLogIn extends React.Component {
 
     vk_redirect() {
         window.location.replace("https://oauth.vk.com/authorize?client_id=6018129&redirect_uri=http://localhost:5000/vk_publisher/v1/verify&display=page&scope=73728");
@@ -13,4 +13,4 @@ class HelloWorld extends React.Component {
     }
 }
 
-ReactDOM.render(<HelloWorld/>, document.getElementById('root'));
+ReactDOM.render(<VKLogIn/>, document.getElementById('root'));

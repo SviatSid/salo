@@ -1,0 +1,4 @@
+class Config:
+    SESSION_TYPE = 'filesystem'
+    PERMANENT_SESSION_LIFETIME = 86400
+    SECRET_KEY = '72b6fe7d50d70962e2cf50bd6d8d6c270592696fbc806163'

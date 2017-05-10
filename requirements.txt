@@ -1,5 +1,6 @@
 Flask
 Flask-Script
+Flask-Session
 flask-restful
 flask_restful_swagger
 vk
