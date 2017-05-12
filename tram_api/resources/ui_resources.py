@@ -10,8 +10,7 @@ from tram_api.resources import BaseResource
 class VKLogInResource(BaseResource):
 
     def get(self):
-        print(session)
         user_id = session.get('user_id', 0) or 0
         if not user_id:
-            return send_from_directory('../static/app', 'log_in.html')
+            return send_from_directory('../static/dist/html', 'main.html')
         return redirect(url_for('home'))

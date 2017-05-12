@@ -13,4 +13,4 @@ class VKLogIn extends React.Component {
     }
 }
 
-ReactDOM.render(<VKLogIn/>, document.getElementById('root'));
+ReactDOM.render(<VKLogIn/>, document.getElementById('vk-button-container'));

@@ -3,7 +3,7 @@ var path = require('path');
 
 var config = {
   entry: {
-    "log_in": "./app/log_in.jsx",
+    "main": "./app/main.jsx",
     "index": "./app/index.jsx"
   },
   output: {
