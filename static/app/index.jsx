@@ -1,16 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { elastic as Menu } from 'react-burger-menu';
+
 import Test from './js/test.jsx';
 
-class HelloWorld extends React.Component {
 
-    vk_redirect() {
-        window.location.replace("https://oauth.vk.com/authorize?client_id=6018129&redirect_uri=http://localhost:5000/vk_publisher/v1/verify&display=page&scope=73728");
-    }
+class MenuIcon extends React.Component {
 
     render() {
-        return <button onClick={this.vk_redirect}>VK</button>;
+        return (
+            <Menu pageWrapId="page-wrap" outerContainerId="outer-container">
+                <a id="home" className="menu-item" href="/">Home</a>
+                <a id="about" className="menu-item" href="/about">About</a>
+            </Menu>
+        )
     }
 }
 
-ReactDOM.render(<HelloWorld/>, document.getElementById('root'));
+class BasePage extends React.Component {
+    render() {
+        return (
+            <div id="outer-container" style={{height: '100%'}}>
+                <MenuIcon/>
+                <div id="page-wrap">
+                    <h1>Some text</h1>
+                </div>
+            </div>
+        )
+    }
+}
+
+
+ReactDOM.render(<BasePage/>, document.getElementById('app'));

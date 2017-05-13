@@ -2,5 +2,6 @@ Flask
 Flask-Script
 Flask-Session
 flask-restful
+Flask-PyMongo
 flask_restful_swagger
 vk

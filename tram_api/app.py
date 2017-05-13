@@ -1,18 +1,22 @@
 from flask import Flask, Blueprint
 from flask_restful import Api
 from flask_restful_swagger import swagger
-from flask.ext.session import Session
+from flask_session import Session
+from flask_pymongo import PyMongo
 
 from tram_api.config import Config
 
 from tram_api.resources.smoke_resource import SmokeResource
-from tram_api.resources.ui_resources import VKLogInResource
+from tram_api.resources.ui_resources import (
+    VKLogInResource,
+    HomePageResource
+)
 from tram_api.resources.vk_oauth_resource import VKOAuthResource
 from tram_api.resources.vk_logout_resource import VKLogOutResource
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask('vk_publisher')
     api_bp = Blueprint('vk_api', __name__)
     ui_bp = Blueprint('vk_ui', __name__, static_folder='../static', static_url_path='')
     ui_route = Api(ui_bp)
@@ -24,6 +28,7 @@ def create_app():
 
     # Add ui resources here
     ui_route.add_resource(VKLogInResource, '/', endpoint='base')
+    ui_route.add_resource(HomePageResource, '/home', endpoint='home')
 
     # Smoke test resource
     api.add_resource(SmokeResource, '/smoke')
@@ -34,6 +39,11 @@ def create_app():
     return app
 
 
-def init_app(app):
+def init_session(app):
     app.config.from_object(Config())
     Session(app)
+
+
+def init_db(app):
+    mongo = PyMongo(app)
+    app.config['mongo'] = mongo
