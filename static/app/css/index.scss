@@ -20,7 +20,8 @@ h1 {
 #page-wrap {
     height: 100%;
     text-align: center;
-    background: #b4bad2;
+    // background: #b4bad2;
+    background: #fff;
 }
 
 
@@ -49,17 +50,44 @@ h1 {
     a {
         color: #b8b7ad;
 
-    &:hover,
-    &:focus {
-        color: #c94e50;
-    }
+        &:hover,
+        &:focus {
+            color: #c94e50;
+        }
     }
 }
 
-.bm-item-list a {
-  padding: 0.8em;
+.bm-menu {
+    padding: 0.5em 2em 0;
+
+    .bm-item-list a {
+        padding: 0.8em;
+        text-decoration: none;
+
+        h2 {
+            margin: 0;
+        }
+        span {
+            margin-left: 10px;
+            font-weight: 700;
+        }
+    }
 }
 
 .bm-overlay {
     background: rgba(0, 0, 0, 0.4);
+}
+
+.container {
+    text-align: left;
+    .header {
+        text-align: center;
+        font-weight: 600;
+    }
+    #create-rule-button {
+        margin-bottom: 25px;
+    }
+    .button-container {
+        text-align: right;
+    }
 }

@@ -23,7 +23,9 @@ gulp.task('inject-main', function() {
 
 
 gulp.task('inject-index', function() {
-    var sources = gulp.src(['./dist/index.bundle.js', './dist/css/index.css'], {read: false});
+    var sources = gulp.src(['./dist/index.bundle.js', 
+                            './dist/bootstrap.min.js', 
+                            './dist/css/*.css'], {read: false});
     return gulp.src('./app/index.html')
         .pipe(inject(sources))
         .pipe(gulp.dest('./dist/html/'))
@@ -36,7 +38,7 @@ gulp.task('webpack', function() {
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('dev:watch', function() {
+gulp.task('default', function() {
     gulp.watch('./app/css/**/*.scss', ['sass']);
     gulp.watch('./app/main.html', ['inject-main']);
     gulp.watch('./app/index.html', ['inject-index']);

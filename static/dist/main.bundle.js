@@ -56,7 +56,7 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _test = __webpack_require__(201);
+	var _test = __webpack_require__(239);
 
 	var _test2 = _interopRequireDefault(_test);
 
@@ -21848,7 +21848,45 @@
 /* 198 */,
 /* 199 */,
 /* 200 */,
-/* 201 */
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21875,30 +21913,197 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Test = function (_React$Component) {
-	    _inherits(Test, _React$Component);
+	var RuleGrid = function (_React$Component) {
+	    _inherits(RuleGrid, _React$Component);
 
-	    function Test() {
-	        _classCallCheck(this, Test);
+	    function RuleGrid(props) {
+	        _classCallCheck(this, RuleGrid);
 
-	        return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (RuleGrid.__proto__ || Object.getPrototypeOf(RuleGrid)).call(this, props));
+
+	        console.log(props);
+	        _this.state = {
+	            rules: props.rules,
+	            headers: props.headers
+	        };
+	        return _this;
 	    }
 
-	    _createClass(Test, [{
+	    _createClass(RuleGrid, [{
+	        key: 'getHeaders',
+	        value: function getHeaders(headers) {
+	            var jsx = [];
+	            for (var i = 0; i < headers.length; i++) {
+	                jsx.push(_react2.default.createElement(
+	                    'th',
+	                    { key: i },
+	                    headers[i]
+	                ));
+	            }
+	            return jsx;
+	        }
+	    }, {
+	        key: 'getRow',
+	        value: function getRow(row) {}
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'h2',
-	                null,
-	                'Test Test test'
+	                'table',
+	                { className: 'table' },
+	                _react2.default.createElement(
+	                    'thead',
+	                    { className: 'thead-inverse' },
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            '#'
+	                        ),
+	                        this.getHeaders(this.state.headers),
+	                        _react2.default.createElement('th', null)
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            { scope: 'row' },
+	                            '1'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            'Mark'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            'Otto'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            '@mdo'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            { className: 'button-container' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'btn-group', role: 'group', 'aria-label': 'Basic example' },
+	                                _react2.default.createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-secondary' },
+	                                    'Edit'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-danger' },
+	                                    'Delete'
+	                                )
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            { scope: 'row' },
+	                            '2'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            'Jacob'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            'Thornton'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            '@fat'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            { className: 'button-container' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'btn-group', role: 'group', 'aria-label': 'Basic example' },
+	                                _react2.default.createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-secondary' },
+	                                    'Edit'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-danger' },
+	                                    'Delete'
+	                                )
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            { scope: 'row' },
+	                            '3'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            'Larry'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            'the Bird'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            null,
+	                            '@twitter'
+	                        ),
+	                        _react2.default.createElement(
+	                            'td',
+	                            { className: 'button-container' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'btn-group', role: 'group', 'aria-label': 'Basic example' },
+	                                _react2.default.createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-secondary' },
+	                                    'Edit'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-danger' },
+	                                    'Delete'
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
 	            );
 	        }
 	    }]);
 
-	    return Test;
+	    return RuleGrid;
 	}(_react2.default.Component);
 
-	exports.default = Test;
+	exports.default = RuleGrid;
 	;
 
 /***/ })

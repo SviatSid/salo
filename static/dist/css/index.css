@@ -16,7 +16,7 @@ h1 {
 #page-wrap {
   height: 100%;
   text-align: center;
-  background: #b4bad2; }
+  background: #fff; }
 
 .bm-burger-button {
   position: fixed;
@@ -38,8 +38,26 @@ h1 {
     .bm-menu a:hover, .bm-menu a:focus {
       color: #c94e50; }
 
-.bm-item-list a {
-  padding: 0.8em; }
+.bm-menu {
+  padding: 0.5em 2em 0; }
+  .bm-menu .bm-item-list a {
+    padding: 0.8em;
+    text-decoration: none; }
+    .bm-menu .bm-item-list a h2 {
+      margin: 0; }
+    .bm-menu .bm-item-list a span {
+      margin-left: 10px;
+      font-weight: 700; }
 
 .bm-overlay {
   background: rgba(0, 0, 0, 0.4); }
+
+.container {
+  text-align: left; }
+  .container .header {
+    text-align: center;
+    font-weight: 600; }
+  .container #create-rule-button {
+    margin-bottom: 25px; }
+  .container .button-container {
+    text-align: right; }
