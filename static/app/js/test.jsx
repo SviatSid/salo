@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-export default class RuleGrid extends React.Component {
+class RuleGrid extends React.Component {
 
     constructor(props) {
         super(props);
@@ -76,3 +75,8 @@ export default class RuleGrid extends React.Component {
         )
     }
 };
+
+
+module.exports = {
+  'RuleGrid': RuleGrid
+}

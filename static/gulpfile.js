@@ -7,6 +7,15 @@ var inject = require('gulp-inject');
 var webpack = require('webpack-stream');
 
 
+function swallowError (error) {
+
+  // If you want details of the error in the console
+  console.log(error.toString())
+
+  this.emit('end')
+}
+
+
 gulp.task('sass', function() {
     return gulp.src('./app/css/**/*.scss')
         .pipe(sass().on('error', sass.logError))
@@ -23,8 +32,9 @@ gulp.task('inject-main', function() {
 
 
 gulp.task('inject-index', function() {
-    var sources = gulp.src(['./dist/index.bundle.js', 
-                            './dist/bootstrap.min.js', 
+    var sources = gulp.src(['./dist/index.bundle.js',
+                            './dist/bootstrap.min.js',
+                            './dist/bootstrap-clockpicker.min.js',
                             './dist/css/*.css'], {read: false});
     return gulp.src('./app/index.html')
         .pipe(inject(sources))
@@ -35,6 +45,7 @@ gulp.task('inject-index', function() {
 gulp.task('webpack', function() {
     return gulp.src('./app/**/*.jsx')
         .pipe(webpack( require('./webpack.config.js') ))
+        .on('error', swallowError)
         .pipe(gulp.dest('dist/'));
 });
 
