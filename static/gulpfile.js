@@ -35,6 +35,7 @@ gulp.task('inject-index', function() {
     var sources = gulp.src(['./dist/index.bundle.js',
                             './dist/bootstrap.min.js',
                             './dist/bootstrap-clockpicker.min.js',
+                            './dist/bootstrap-datepicker.min.js',
                             './dist/css/*.css'], {read: false});
     return gulp.src('./app/index.html')
         .pipe(inject(sources))

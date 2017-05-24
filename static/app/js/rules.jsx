@@ -1,24 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
-import DatePicker from 'react-datepicker';
 import { Button, FormGroup, ControlLabel, HelpBlock, FormControl } from 'react-bootstrap';
 
 import {RuleGrid} from './test.jsx';
 import {Modal} from './modals/base_modal.jsx';
+import {CreateRuleModalContent} from './modals/create_rule_modal.jsx';
 
 
 var headers = ['test', 'test', 'test'];
-
-function FieldGroup({ id, lable, help }) {
-  return (
-    <FormGroup controlId={id}>
-      <ControlLabel>{lable}</ControlLabel>
-      <FormControl/>
-      {help && <HelpBlock>{help}</HelpBlock>}
-    </FormGroup>
-  );
-}
 
 
 export default class Rules extends React.Component {
@@ -33,6 +23,7 @@ export default class Rules extends React.Component {
 
     show() {
         $('.clockpicker').clockpicker();
+        $('.datepicker-container input').datepicker({});
         $('#create-rule-modal').modal('show');
     }
 
@@ -50,24 +41,7 @@ export default class Rules extends React.Component {
                 <RuleGrid headers={headers} />
 
                 <Modal title="Create rule" modal_id="create-rule-modal">
-                    <form>
-                        <FieldGroup
-                            id="formControlsText"
-                            type="text"
-                            lable="Start day"
-                            placeholder="Enter text"
-                        />
-                        <div className="input-group clockpicker">
-                            <input type="text" className="form-control" defaultValue="09:30"/>
-                            <span className="input-group-addon">
-                                <span className="glyphicon glyphicon-time"></span>
-                            </span>
-                        </div>
-                        <DatePicker
-                            selected={this.state.startDate}
-                            onChange={this.handleChange}
-                        />
-                    </form>
+                    <CreateRuleModalContent/>
                 </Modal>
             </div>
         );
