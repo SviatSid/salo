@@ -24,7 +24,7 @@ export default class Modal extends React.Component {
                   </div>
                   <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary">Save changes</button>
+                    <button type="button" className="btn btn-primary" onClick={this.props.handler}>Save changes</button>
                   </div>
                 </div>
               </div>

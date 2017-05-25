@@ -5,11 +5,11 @@ import Test from './js/test.jsx';
 class VKLogIn extends React.Component {
 
     vk_redirect() {
-        window.location.replace("https://oauth.vk.com/authorize?client_id=6018129&redirect_uri=http://localhost:5000/vk_publisher/v1/verify&display=page&scope=73728");
+        window.location.replace("https://www.facebook.com/dialog/oauth?client_id=313127969107763&redirect_uri=http://localhost:5000/vk_publisher/v1/verify&scope=publish_actions")
     }
 
     render() {
-        return <button onClick={this.vk_redirect}>VK</button>;
+        return <button onClick={this.vk_redirect}>Facebook</button>;
     }
 }
 

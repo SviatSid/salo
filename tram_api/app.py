@@ -13,6 +13,7 @@ from tram_api.resources.ui_resources import (
 )
 from tram_api.resources.vk_oauth_resource import VKOAuthResource
 from tram_api.resources.vk_logout_resource import VKLogOutResource
+from tram_api.resources.rules_resource import RulesResource
 
 
 def create_app():
@@ -25,6 +26,7 @@ def create_app():
     # Add api resources here
     api.add_resource(VKOAuthResource, '/verify')
     api.add_resource(VKLogOutResource, '/logout')
+    api.add_resource(RulesResource, '/rules')
 
     # Add ui resources here
     ui_route.add_resource(VKLogInResource, '/', endpoint='base')

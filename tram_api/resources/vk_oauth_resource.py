@@ -19,12 +19,13 @@ class VKOAuthResource(BaseResource):
     )
     def get(self):
         code = request.args.get('code', 0) or 0
-        r = requests.get('https://oauth.vk.com/access_token', params={
+        r = requests.get('https://graph.facebook.com/v2.9/oauth/access_token', params={
             'code': code,
-            'client_id': 6018129,
-            'client_secret': 'Kikh5h8WeCeO3bG9TAHn',
+            'client_id': 313127969107763,
+            'client_secret': '5a7dc0a5eebffe3dc6ac08aae5b0c721',
             'redirect_uri': 'http://localhost:5000/vk_publisher/v1/verify'
         })
         user_data = r.json()
+        print(user_data)
         session.update(user_data)
         return redirect('/')
