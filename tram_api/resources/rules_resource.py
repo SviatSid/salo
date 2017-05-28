@@ -9,7 +9,7 @@ class RulesResource(BaseResource):
         rule = self.mongo.db.rules
         new_rule = {
             'frequency': request.form.get('frequency', 1),
-            'days': request.form.get('days', []),
+            'days': request.form.getlist('days[]'),
             'date': request.form.get('date_picker', ''),
             'time': request.form.get('time_picker', ''),
         }
@@ -19,7 +19,18 @@ class RulesResource(BaseResource):
         return {'status': 'ok', 'rule': new_rule}, 200
 
     def get(self):
-        pass
+        rules = self.mongo.db.rules
+        result = []
+        for rule in rules.find():
+            result.append({
+                'frequency': rule['frequency'],
+                'days': rule['days'],
+                'date': rule['date'],
+                'time': rule['time'],
+                '_id': str(rule['_id'])
+            })
+        return result, 200
+
 
 
 class RuleResource(BaseResource):

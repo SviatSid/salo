@@ -8,7 +8,7 @@ import {Modal} from './modals/base_modal.jsx';
 import {CreateRuleModalContent} from './modals/create_rule_modal.jsx';
 
 
-var headers = ['test', 'test', 'test'];
+var headers = ['Start time', 'Start date', 'Frequency'];
 
 
 export default class Rules extends React.Component {
@@ -16,7 +16,8 @@ export default class Rules extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: moment()
+            startDate: moment(),
+            rules: []
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -33,6 +34,27 @@ export default class Rules extends React.Component {
         });
     }
 
+    componentDidMount() {
+        self = this
+        $.get("/vk_publisher/v1/rules",
+            function(rules, status) {
+                if (status == 'success') {
+                    this.setState({'rules': rules});
+                }
+            }.bind(this));
+    }
+
+    getRows() {
+      var self = this
+      $.get("/vk_publisher/v1/rules",
+            function(rules, status) {
+                console.log(rules, 'getting');
+                if (status == 'success') {
+                    self.setState({'rules': rules});
+                }
+            });
+    }
+
     createRule() {
         var data = {'days': []};
         var form = $('#create-rule-form :input').not(':input[type=checkbox]');
@@ -43,9 +65,9 @@ export default class Rules extends React.Component {
             data['days'].push($(this).val());
         });
         $.post("/vk_publisher/v1/rules",
-               data,
-               function(response, status) {
-                console.log(response);
+                data,
+                function(response, status) {
+                    console.log(response);
             });
     }
 
@@ -54,7 +76,7 @@ export default class Rules extends React.Component {
             <div className="container">
                 <h1 className="header">Rules</h1>
                 <Button bsStyle="primary" id="create-rule-button" onClick={this.show}>Create new Rule</Button>
-                <RuleGrid headers={headers} />
+                <RuleGrid headers={headers} rules={this.state.rules} />
 
                 <Modal title="Create rule" modal_id="create-rule-modal" handler={this.createRule}>
                     <CreateRuleModalContent/>

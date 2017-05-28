@@ -8,16 +8,7 @@ import {
 import { elastic as Menu } from 'react-burger-menu';
 
 import Rules from './js/rules.jsx';
-
-
-class About extends React.Component {
-
-  render() {
-    return <div>
-    <h1>About</h1>
-  </div>
-  }
-}
+import Posts from './js/posts.jsx';
 
 
 class MenuIcon extends React.Component {
@@ -55,7 +46,7 @@ class BasePage extends React.Component {
                     <div id="page-wrap">
                         <Route exact path="/" component={Rules}/>
                         <Route exact path="/rules" component={Rules}/>
-                        <Route path="/posts" component={About}/>
+                        <Route path="/posts" component={Posts}/>
                     </div>
 
                 </div>

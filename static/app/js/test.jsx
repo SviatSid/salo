@@ -1,13 +1,19 @@
 import React from 'react';
 
+var frequency = {
+    "1": "Monthly",
+    "2": "Weekly",
+    "3": "Hourly"
+}
+
+
 class RuleGrid extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             rules: props.rules,
-            headers: props.headers
+            headers: props.headers,
         }
     }
 
@@ -19,8 +25,29 @@ class RuleGrid extends React.Component {
         return jsx;
     }
 
-    getRow(row) {
+    getRows(rules) {
+        var jsx = [];
+        for(var i=0; i<rules.length; i++) {
+            jsx.push(this.getRow(i, rules[i]))
+        }
+      return jsx;
+    }
 
+    getRow(i, row) {
+        return (
+            <tr key={row['_id']}>
+              <th scope="row">{i + 1}</th>
+              <td>{row['time']}</td>
+              <td>{row['date']}</td>
+              <td>{frequency[row['frequency']]}</td>
+              <td className="button-container">
+                  <div className="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" className="btn btn-secondary">Edit</button>
+                      <button type="button" className="btn btn-danger">Delete</button>
+                  </div>
+              </td>
+            </tr>
+        )
     }
 
     render() {
@@ -34,42 +61,7 @@ class RuleGrid extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td className="button-container">
-                          <div className="btn-group" role="group" aria-label="Basic example">
-                              <button type="button" className="btn btn-secondary">Edit</button>
-                              <button type="button" className="btn btn-danger">Delete</button>
-                          </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                      <td className="button-container">
-                          <div className="btn-group" role="group" aria-label="Basic example">
-                              <button type="button" className="btn btn-secondary">Edit</button>
-                              <button type="button" className="btn btn-danger">Delete</button>
-                          </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                      <td className="button-container">
-                          <div className="btn-group" role="group" aria-label="Basic example">
-                              <button type="button" className="btn btn-secondary">Edit</button>
-                              <button type="button" className="btn btn-danger">Delete</button>
-                          </div>
-                      </td>
-                    </tr>
+                    {this.getRows(this.props.rules)}
                 </tbody>
             </table>
         )
