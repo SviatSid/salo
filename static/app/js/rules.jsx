@@ -17,7 +17,8 @@ export default class Rules extends React.Component {
         super(props);
         this.state = {
             startDate: moment(),
-            rules: []
+            rules: [],
+            posts: []
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -35,24 +36,18 @@ export default class Rules extends React.Component {
     }
 
     componentDidMount() {
-        self = this
         $.get("/vk_publisher/v1/rules",
             function(rules, status) {
                 if (status == 'success') {
                     this.setState({'rules': rules});
                 }
             }.bind(this));
-    }
-
-    getRows() {
-      var self = this
-      $.get("/vk_publisher/v1/rules",
-            function(rules, status) {
-                console.log(rules, 'getting');
+        $.get("/vk_publisher/v1/posts",
+            function(posts, status) {
                 if (status == 'success') {
-                    self.setState({'rules': rules});
+                    this.setState({'posts': posts});
                 }
-            });
+            }.bind(this));
     }
 
     createRule() {
@@ -61,9 +56,10 @@ export default class Rules extends React.Component {
         form.each(function() {
             data[this.name] = $(this).val();
         });
-        $("input:checkbox[name=day]:checked").each(function(){
+        $("input:checkbox[name=day]:checked").each(function() {
             data['days'].push($(this).val());
         });
+        data['post_id'] = $('#post-name').find(":selected").data('post-id');
         $.post("/vk_publisher/v1/rules",
                 data,
                 function(response, status) {
@@ -79,7 +75,7 @@ export default class Rules extends React.Component {
                 <RuleGrid headers={headers} rules={this.state.rules} />
 
                 <Modal title="Create rule" modal_id="create-rule-modal" handler={this.createRule}>
-                    <CreateRuleModalContent/>
+                    <CreateRuleModalContent posts={this.state.posts}/>
                 </Modal>
             </div>
         );

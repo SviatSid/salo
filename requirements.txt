@@ -5,3 +5,4 @@ flask-restful
 Flask-PyMongo
 flask_restful_swagger
 vk
+facebook-sdk

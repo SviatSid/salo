@@ -6,7 +6,7 @@ class FrequencyData extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: props.type
+            type: props.type,
         }
     }
 
@@ -108,7 +108,8 @@ class CreateRuleModalContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: moment()
+            startDate: moment(),
+            posts: props.posts,
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -117,6 +118,14 @@ class CreateRuleModalContent extends React.Component {
         this.setState({
             startDate: date
         });
+    }
+
+    getPostRows(posts) {
+        var jsx = [];
+        for(var i=0; i < posts.length; i++) {
+            jsx.push(<option key={posts[i]['_id']} data-post-id={posts[i]['_id']}>{posts[i]['name']}</option>)
+        }
+        return jsx;
     }
 
     render() {
@@ -151,6 +160,14 @@ class CreateRuleModalContent extends React.Component {
                         </div>
                     </div>
                     <FrequencySelect/>
+                    <div className="form-group row">
+                        <div className="col-md-12">
+                            <label htmlFor="post-name" className="col-form-label">Post Name</label>
+                            <select name='post_name' className="form-control" id="post-name">
+                                {this.getPostRows(this.props.posts)}
+                            </select>
+                        </div>
+                    </div>
                 </form>
             </div>
         );

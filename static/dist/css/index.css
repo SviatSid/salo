@@ -59,5 +59,7 @@ h1 {
     font-weight: 600; }
   .container #create-rule-button {
     margin-bottom: 25px; }
+  .container #create-post-button {
+    margin-bottom: 25px; }
   .container .button-container {
     text-align: right; }

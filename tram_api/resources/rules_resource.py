@@ -12,6 +12,7 @@ class RulesResource(BaseResource):
             'days': request.form.getlist('days[]'),
             'date': request.form.get('date_picker', ''),
             'time': request.form.get('time_picker', ''),
+            'post_id': request.form.get('post_id', 0),
         }
         rule_id = rule.insert(new_rule)
         new_rule = rule.find_one({'_id': rule_id})
@@ -27,10 +28,10 @@ class RulesResource(BaseResource):
                 'days': rule['days'],
                 'date': rule['date'],
                 'time': rule['time'],
+                'post_id': rule.get('post_id', 0),
                 '_id': str(rule['_id'])
             })
         return result, 200
-
 
 
 class RuleResource(BaseResource):
